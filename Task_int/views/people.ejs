@@ -1,0 +1,272 @@
+<html>
+    <head>
+        <tite>
+            
+        </tite>
+        <style>
+            .but{
+                width: 15px;
+    border: none;
+    margin-left: 10px;
+            }
+        </style>
+     
+<script>
+
+    var rooms;
+    var adults;
+    var children;
+    var roomsCount;
+    var adultsCount;
+    var childrenCount;
+
+    function rooms_incr()
+    {
+
+    rooms=document.getElementById("rooms_inp").innerText;
+
+    if(rooms<5)
+    roomsCount=parseInt(rooms)+1;
+    
+    document.getElementById("rooms_inp").innerText=roomsCount;
+    roomDecr="enabled"
+    roomIncr="enabled"
+    adultsIncr="enabled"
+    childrenIncr="ënabled"
+    if(rooms>4)
+    roomIncr="disabled"
+
+    }
+
+    function rooms_decr()
+    {
+    rooms=document.getElementById("rooms_inp").innerText;
+    roomsCount=parseInt(rooms);
+    adults=document.getElementById("adults_inp").innerText;
+    children=document.getElementById("children_inp").innerText;
+
+
+    adultsCount=parseInt(adults);
+    childrenCount=parseInt(children);
+
+    adultsIncr="disabled"
+    childrenIncr="disabled"
+    
+    if((roomsCount)>1)
+    {
+    
+    rooms = roomsCount-1;
+    roomsCount=parseInt(rooms)
+        document.getElementById("rooms_inp").innerText=rooms;
+        
+    
+        if((adultsCount+childrenCount)>roomsCount*4)
+        {
+        
+        while((adultsCount+childrenCount)!=roomsCount*4)
+        {
+            if(childrenCount>0){
+            childrenCount = childrenCount-1;
+        
+            document.getElementById("children_inp").innerText=childrenCount;
+        }
+            if(childrenCount==0){
+            adultsCount = adultsCount-1;
+            console.log(adultsCount)
+            document.getElementById("adults_inp").innerText=adultsCount;
+        } 
+    }    
+        }
+    }
+
+    if(roomsCount==1)
+    roomDecr1="disabled"
+    if(roomsCount==4)
+    roomIncr="enabled"
+    }
+
+
+    function adults_incr()
+    {
+    rooms=document.getElementById("rooms_inp").innerText;
+    adults=document.getElementById("adults_inp").innerText;
+    children=document.getElementById("children_inp").innerText;
+
+    roomsCount=parseInt(rooms);
+    adultsCount=parseInt(adults);
+    childrenCount=parseInt(children);
+
+    if((adultsCount+childrenCount)<roomsCount*4)
+    adultsCount = adultsCount+1;
+    document.getElementById("adults_inp").innerText=adultsCount;
+    adultsIncr="enabled"
+    adultsDecr="enabled"
+
+    if((adultsCount+adultsCount)==roomsCount*4)
+        adultsIncr="disabled"
+    }
+
+    function adults_decr()
+    {
+        rooms=document.getElementById("rooms_inp").innerText;
+        adults=document.getElementById("adults_inp").innerText;
+        children=document.getElementById("children_inp").innerText;
+
+    roomsCount=parseInt(rooms);
+    adultsCount=parseInt(adults);
+    childrenCount=parseInt(children);
+
+    adultsIncr="enabled"
+    childrenIncr="enabled"
+    if(adultsCount>1)
+    {
+    adultsCount = adultsCount-1;
+    document.getElementById("adults_inp").innerText=adultsCount;
+    }
+    if(adultsCount==1)
+    adultsDecr="disabled"
+    if(adultsCount==(roomsCount*4)-1)
+        adultsIncr="enable"
+    }
+
+    function children_incr()
+    {
+        
+    rooms=document.getElementById("rooms_inp").innerText;
+    adults=document.getElementById("adults_inp").innerText;
+    children=document.getElementById("children_inp").innerText;
+    roomsCount=parseInt(rooms);
+    adultsCount=parseInt(adults);
+    childrenCount=parseInt(children);
+
+
+    if((adultsCount+childrenCount)<roomsCount*4)
+    childrenCount = childrenCount+1;
+    children=document.getElementById("children_inp").innerText=childrenCount;
+    childrenDecr = "enable"
+    if((adultsCount)==roomsCount*4)
+        childrenIncr="disabled"
+    }
+
+    function children_decr()
+    {
+
+    adults=document.getElementById("adults_inp").innerText;
+    children=document.getElementById("children_inp").innerText;
+
+    roomsCount=parseInt(rooms);
+    adultsCount=parseInt(adults);
+    childrenCount=parseInt(children);
+
+    adultsIncr="enabled"
+    childrenIncr="enabled"
+    if(childrenCount>0)
+    childrenCount = childrenCount-1;
+    children=document.getElementById("children_inp").innerText=childrenCount;
+
+    if(childrenCount==0)
+    childrenDecr="disabled"
+    }
+
+
+
+</script>
+
+                <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+  </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8" style="margin-top:15%">
+<h4>
+     <div style="color:#1b1b9a"><i class="fas fa-users"></i>
+
+        &nbsp;Choose number of <strong style="font-weight:500">people</strong>
+</div></h4>
+<form class="p-2"style="border: 1px solid #000000!important;">
+    <div class="row">
+        <div class="col-10">
+                <i class="fas fa-bed" style="color:#1b1b9a" ></i><b style="color:#1b1bb4de;">&nbsp;&nbsp;ROOMS</b>
+        </div>
+        <div class="col-2">
+                <i id="minus" name="minus" class="fas fa-minus-circle " onclick="rooms_decr()" style="color:#1b1b9a"></i>
+                <b id="rooms_inp">1 </b>
+                
+                <!-- <p  class="but" id="rooms_inp" >1</p> -->
+              <i id="plus" name="plus" class="fas fa-plus-circle" onclick="rooms_incr()" style="color:#eb2748;" ></i>
+        </div>
+    </div>  
+    
+    <hr>
+    <div class="row">
+            <div class="col-10">
+                    <i class="fas fa-user-alt" style="color:#1b1b9a"></i><b style="color:#1b1bb4de">&nbsp;&nbsp;ADULT</b>
+            </div>
+            <div class="col-2">
+                    
+       
+        <i id="minus" name="minus" class="fas fa-minus-circle" onclick="adults_decr()" style="color:#1b1b9a"></i>
+       
+        <b  id="adults_inp">1</b>
+        <!-- <input type="text" readonly class="but" id="adults_inp" value="1"> -->
+        <i id="plus" name="plus" class="fas fa-plus-circle" onclick="adults_incr()" style="color:#eb2748"></i>
+            </div>
+        </div> 
+   
+        <hr>
+        <div class="row">
+                <div class="col-10">
+                        <i class="fas fa-child" style="color:#1b1b9a"></i><b style="color:#1b1bb4de">&nbsp;&nbsp;CHILDREN</b>
+                </div>
+                <div class="col-2">
+                        
+           
+                        <i id="minus" name="minus" class="fas fa-minus-circle" onclick="children_decr()" style="color:#1b1b9a"></i>
+       
+                        <b  id="children_inp" >0</b>
+                        <!-- <input type="text" readonly class="but" id="children_inp" value="0"> -->
+                        <i id="plus" name="plus" class="fas fa-plus-circle" onclick="children_incr()" style="color:#eb2748"></i>
+                </div>
+            </div> 
+      
+       
+
+
+        
+
+
+    
+      
+        
+
+
+
+        
+</form>
+
+
+</div>
+<div class="col-2"></div>
+</div>
+</div>
+
+
+
+
+
+    </body>
+            <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+</html>
