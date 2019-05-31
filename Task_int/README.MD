@@ -1,7 +1,7 @@
 A Node.js app using Express.
 
 Git repository:
-https://github.com/Prithviraju05/pacs.git
+https://github.com/Prithviraju05/task_interview_people.git
 
 Running Locally
 Make sure you have Node.js and the Visual Studio installed.
